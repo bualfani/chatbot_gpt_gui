@@ -19,6 +19,7 @@ class ChatbotWindow(QMainWindow):
         # Input field widget
         self.input_field = QLineEdit(self)
         self.input_field.setGeometry(10, 340, 480, 40)
+        self.input_field.returnPressed.connect(self.send_message)
 
         # Add Button
         self.button = QPushButton("Send", self)

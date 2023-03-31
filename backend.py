@@ -7,11 +7,17 @@ class Chatbot:
         openai.api_key ="your_key"
 
     def get_response(self, user_input):
-        responds = openai.Completion.create(
+        response = openai.Completion.create(
             egine = "text-davinci-003",
             prompt = user_input,
             # tokens are words
             max_tokens=4000,
             # low temperature is more accurate answers but less diverse, more temperature is the opposite
             temperature=0.5
-        )
+        ).choice[0].text
+        return response
+
+
+if __name__ == "__main__":
+    chatbot = Chatbot()
+    response = chatbot.get_response()
